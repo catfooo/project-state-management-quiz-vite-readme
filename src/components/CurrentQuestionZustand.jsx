@@ -6,22 +6,16 @@ import "../styling/question.css";
 
 export const CurrentQuestionZustand = () => {
   const questions = useQuizStore((state) => state.questions);
-  // console.log("Questions is", questions);
 
   const currentQuestionIndex = useQuizStore(
     (state) => state.currentQuestionIndex
   );
   const question = questions[currentQuestionIndex];
-  // console.log(question);
   const submitAnswer = useQuizStore((state) => state.submitAnswer);
-  // console.log(submitAnswer);
   const answers = useQuizStore((state) => state.answers);
-  // console.log("Answers: ⭐️", answers);
   const answer = answers.find((a) => a.questionId === question.id);
-  // console.log("answer...here...", answer);
 
   const quizOver = useQuizStore((state) => state.quizOver);
-  // console.log("QuizOver Answer:", quizOver);
 
 
    // Define isCorrect at the top of the component
@@ -36,7 +30,6 @@ export const CurrentQuestionZustand = () => {
   
   const handleSubmitAnswer = (event) => {
     const answerIndex = Number(event.target.value);
-    // console.log(answerIndex);
     const isCorrect = answerIndex === question.correctAnswerIndex;
     submitAnswer(question.id, answerIndex, isCorrect);
   };
